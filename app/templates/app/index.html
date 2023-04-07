@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <!-- font-awesome icons -->
+    <script src="https://kit.fontawesome.com/a4ceb3bfd3.js" crossorigin="anonymous"></script>
+    <!-- google-fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'app/css/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="city-input">
+            <form action="#" method="post" autocomplete="off">
+                {% csrf_token %}
+                <input type="text" name="city" id="city" placeholder="Enter city">
+                <button type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row top-row">
+            <div class="c-name col">
+                <i class="fa-solid fa-house fa-2xl"></i>
+                <h2 class="city">{{data.name}}, </h2>
+                <h2 class="country">{{data.c_country}}</h2>
+            </div>
+            <div class="c-temp col">
+                {{data.c_temp}} <span>
+                   <sup>
+                    °C
+                   </sup>
+                </span> 
+            </div>
+        </div>
+        <div class="row middle-row">
+            <div class="c-humidity col">
+                <i class="fa-solid fa-droplet fa-xl"></i>
+              <p>
+                {{data.c_humidity}}% 
+                <span>Humidity</span>
+              </p> 
+            </div>
+            <div class="c-pressure col">
+                <i class="fa-solid fa-wind fa-xl"></i>
+              <p>
+                {{data.c_pressure}} hpa
+                <span>Pressure</span>
+              </p>  
+            </div>
+            <div class="c-visibility col">
+                <i class="fa-solid fa-eye fa-xl"></i>
+              <p>
+                {{data.c_visibility}} km
+                <span>Visibility</span>
+              </p>  
+            </div>
+        </div>
+        <div class="row middle-row-two">
+            <div class="c-type col">
+                <i class="fa-solid fa-cloud"></i>
+              <p>
+                {{data.c_type}} 
+                <span></span>
+              </p> 
+            </div>
+            <div class="c-max-temp col">
+                <i class="fa-solid fa-temperature-high fa-xl"></i>
+              <p>
+                {{data.c_max_temp}} <sup>
+                    °C
+                   </sup>
+                <span>  Max temp</span>
+              </p>  
+            </div>
+            <div class="c-min-feels col">
+                <i class="fa-solid fa-temperature-high fa-xl"></i>
+              <p>
+                {{data.c_feels_like_temp}}<sup>
+                    °C
+                   </sup> 
+                <span>Feels like</span>
+              </p>  
+            </div>
+        </div>
+    </div>
+    <!-- ion icons -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
